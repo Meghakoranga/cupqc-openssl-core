@@ -1,0 +1,355 @@
+--- ml_kem_original.c	2025-12-17 17:11:42.019934033 +0000
++++ openssl_patches/crypto/ml_kem/ml_kem.c	2025-12-17 17:09:16.150140559 +0000
+@@ -6,7 +6,11 @@
+  * in the file LICENSE in the source distribution or at
+  * https://www.openssl.org/source/license.html
+  */
+-
++#include <pthread.h>
++#include <openssl/async.h>
++#include "cupqc_batch.h"
++#include <stdlib.h>
++#include "/home/ubuntu/cupqc_project/cupqc_shim.hpp"
+ #include <openssl/byteorder.h>
+ #include <openssl/rand.h>
+ #include "crypto/ml_kem.h"
+@@ -83,7 +87,69 @@
+ #else
+ # define SCALAR_SAMPLING_BUFSIZE 168
+ #endif
++// Prototype for the function you found via grep
++int ossl_ml_kem_encode_public_key(uint8_t *out, size_t len, const ML_KEM_KEY *key);
++extern void cupqc_encaps_mlkem768_batch(
++    int count, 
++    uint8_t **pk_ptrs, 
++    uint8_t **rnd_ptrs, 
++    uint8_t **ss_ptrs, 
++    uint8_t **ct_ptrs
++);
++/* ================= CUPQC BATCHING START ================= */
++
++// The Global Queue Instance
++static cupqc_batch_queue_t global_queue;
++static pthread_t batch_thread_id;
++static int batch_system_initialized = 0;
++void* cupqc_batch_worker(void *arg) {
++    while (1) {
++        pthread_mutex_lock(&global_queue.lock);
++
++        // 1. Wait for batch to fill
++        while (global_queue.count < CUPQC_BATCH_SIZE && !global_queue.shutdown) {
++            pthread_cond_wait(&global_queue.cond, &global_queue.lock);
++        }
++
++        if (global_queue.shutdown) {
++            pthread_mutex_unlock(&global_queue.lock);
++            break;
++        }
++
++        // 2. Prepare pointers for the GPU
++        uint8_t *pk_ptrs[CUPQC_BATCH_SIZE];
++        uint8_t *rnd_ptrs[CUPQC_BATCH_SIZE];
++        uint8_t *ss_ptrs[CUPQC_BATCH_SIZE];
++        uint8_t *ct_ptrs[CUPQC_BATCH_SIZE];
++
++        for (int i = 0; i < CUPQC_BATCH_SIZE; i++) {
++            pk_ptrs[i] = global_queue.jobs[i].pub_key_storage;
++            rnd_ptrs[i] = global_queue.jobs[i].randomness_in;
++            ss_ptrs[i]  = global_queue.jobs[i].shared_secret_out;
++            ct_ptrs[i]  = global_queue.jobs[i].ciphertext_out;
++        }
+ 
++        // 3. CALL GPU (This is your libcupqc wrapper)
++        // Note: We pass the 'r' (randomness) array too!
++        cupqc_encaps_mlkem768_batch(CUPQC_BATCH_SIZE, pk_ptrs, rnd_ptrs, ss_ptrs, ct_ptrs);
++
++        // 4. Mark done and notify OpenSSL
++        for (int i = 0; i < CUPQC_BATCH_SIZE; i++) {
++            global_queue.jobs[i].status = 1; 
++            // In a real implementation, you would write to the async_wait_fd here
++            // to wake up the specific ASYNC_JOB.
++        }
++
++        // Reset
++        global_queue.count = 0;
++        pthread_mutex_unlock(&global_queue.lock);
++        
++        // Small yield to allow woken threads to resume
++        usleep(50); 
++    }
++    return NULL;
++}
++/* ================= CUPQC BATCHING END ================= */
+ /*
+  * Structure of keys
+  */
+@@ -1402,7 +1468,7 @@
+     }
+ 
+     ret = 1;
+-  end:
++ end:
+     OPENSSL_cleanse((void *)augmented_seed, ML_KEM_RANDOM_BYTES);
+     OPENSSL_cleanse((void *)sigma, ML_KEM_RANDOM_BYTES);
+     return ret;
+@@ -1618,7 +1684,7 @@
+      * duplicated.
+      */
+     if (ossl_ml_kem_decoded_key(key))
+-        return 0;
++        return NULL;
+ 
+     if (key == NULL
+         || (ret = OPENSSL_memdup(key, sizeof(*key))) == NULL)
+@@ -1805,10 +1871,122 @@
+  */
+ int ossl_ml_kem_genkey(uint8_t *pubenc, size_t publen, ML_KEM_KEY *key)
+ {
++    // Standard declarations
++    uint8_t seed[ML_KEM_SEED_BYTES];
++	EVP_MD_CTX *mdctx = NULL;
++    const ML_KEM_VINFO *vinfo;
++    int ret = 0;
++
++    // [CUPQC PATCH START]
++    if (getenv("ENABLE_CUPQC")) {
++        // --- GPU PATH ---
++        if (key == NULL || key->vinfo == NULL){ return 0;
++}
++      vinfo = key->vinfo;
++
++        // A. Allocate Key Storage (Critical for OpenSSL to manage the key memory)
++        // Note: prvalloc is big enough for private key + public key + extra
++        if (!add_storage(OPENSSL_malloc(vinfo->prvalloc), 1, key)) {
++            return 0;
++        }
++
++        // B. Allocate Temporary Buffers for Shim
++        size_t pk_len = vinfo->pubkey_bytes;
++        size_t sk_len = vinfo->prvkey_bytes;
++        uint8_t *pk_buf = OPENSSL_malloc(pk_len);
++        uint8_t *sk_buf = OPENSSL_malloc(sk_len);
++
++        if (!pk_buf || !sk_buf) {
++            goto end_cupqc;
++        }
++
++        // C. Call GPU Shim
++        int shim_ret = cupqc_shim_keygen_768(pk_buf, sk_buf);
++        if (shim_ret != 1) {
++            // If shim fails, ret remains 0
++            goto end_cupqc;
++        }
++
++        // D. Parse Results back into OpenSSL structures
++        mdctx = EVP_MD_CTX_new();
++        if (mdctx != NULL) {
++            int p1 = parse_pubkey(pk_buf, mdctx, key);
++            int p2 = parse_prvkey(sk_buf, mdctx, key);
++            if (p1 && p2) ret = 1; // SUCCESS!
++        }
++
++        // E. Copy public key to output buffer if requested
++        if (pubenc && ret) {
++            memcpy(pubenc, pk_buf, pk_len);
++        }
++
++    end_cupqc:
++        if (pk_buf) OPENSSL_free(pk_buf);
++        if (sk_buf) OPENSSL_free(sk_buf);
++        if (mdctx) EVP_MD_CTX_free(mdctx);
++        return ret; // Returns 1 on success, 0 on failure
++    }
++    // [CUPQC PATCH END]
++
++
++    // --- FALLBACK SOFTWARE PATH ---
++    // (This code only runs if ENABLE_CUPQC is NOT set)
++
++    if (key == NULL || ossl_ml_kem_have_pubkey(key) || ossl_ml_kem_have_dkenc(key))
++       { return 0;}
++ vinfo = key->vinfo;
++
++    if (pubenc != NULL && publen != vinfo->pubkey_bytes)
++        return 0;
++   if (ossl_ml_kem_have_seed(key)) {
++        if (!ossl_ml_kem_encode_seed(seed, sizeof(seed), key))
++            return 0;
++        key->d = key->z = NULL;
++    } else if (RAND_priv_bytes_ex(key->libctx, seed, sizeof(seed),
++                                    key->vinfo->secbits) <= 0) {
++        return 0;
++    }
++
++    if ((mdctx = EVP_MD_CTX_new()) == NULL)
++        return 0;
++
++    /*
++     * Data derived from (d, z) defaults secret, and to avoid side-channel
++     * leaks should not influence control flow.
++     */
++    CONSTTIME_SECRET(seed, ML_KEM_SEED_BYTES);
++
++    if (add_storage(OPENSSL_malloc(vinfo->prvalloc), 1, key))
++        ret = genkey(seed, mdctx, pubenc, key);
++    OPENSSL_cleanse(seed, sizeof(seed));
++
++    /* Deoclassify secret inputs and derived outputs before returning control */
++    CONSTTIME_DECLASSIFY(seed, ML_KEM_SEED_BYTES);
++
++end:
++    // This is the original function's cleanup and return block
++    EVP_MD_CTX_free(mdctx);
++    if (!ret) {
++        ossl_ml_kem_key_reset(key);
++        return 0;
++    }
++
++    /* The public components are already declassified */
++    CONSTTIME_DECLASSIFY(key->s, vinfo->rank * sizeof(scalar));
++    CONSTTIME_DECLASSIFY(key->z, 2 * ML_KEM_RANDOM_BYTES);
++    return 1;
++}
++/*int ossl_ml_kem_genkey(uint8_t *pubenc, size_t publen, ML_KEM_KEY *key)
++{
+     uint8_t seed[ML_KEM_SEED_BYTES];
+     EVP_MD_CTX *mdctx = NULL;
+     const ML_KEM_VINFO *vinfo;
+     int ret = 0;
++    if (getenv("ENABLE_CUPQC")) 
++    {
++    if (cupqc_shim_keygen_768(key->pub, key->priv)) return 1;
++     }
++
+ 
+     if (key == NULL
+         || ossl_ml_kem_have_pubkey(key)
+@@ -1835,14 +2013,14 @@
+      * Data derived from (d, z) defaults secret, and to avoid side-channel
+      * leaks should not influence control flow.
+      */
+-    CONSTTIME_SECRET(seed, ML_KEM_SEED_BYTES);
++/*    CONSTTIME_SECRET(seed, ML_KEM_SEED_BYTES);
+ 
+     if (add_storage(OPENSSL_malloc(vinfo->prvalloc), 1, key))
+         ret = genkey(seed, mdctx, pubenc, key);
+     OPENSSL_cleanse(seed, sizeof(seed));
+ 
+     /* Declassify secret inputs and derived outputs before returning control */
+-    CONSTTIME_DECLASSIFY(seed, ML_KEM_SEED_BYTES);
++/*    CONSTTIME_DECLASSIFY(seed, ML_KEM_SEED_BYTES);
+ 
+     EVP_MD_CTX_free(mdctx);
+     if (!ret) {
+@@ -1851,11 +2029,12 @@
+     }
+ 
+     /* The public components are already declassified */
+-    CONSTTIME_DECLASSIFY(key->s, vinfo->rank * sizeof(scalar));
++  /*  CONSTTIME_DECLASSIFY(key->s, vinfo->rank * sizeof(scalar));
+     CONSTTIME_DECLASSIFY(key->z, 2 * ML_KEM_RANDOM_BYTES);
+     return 1;
+ }
+-
++*
++*/
+ /*
+  * FIPS 203, Section 6.2, Algorithm 17: ML-KEM.Encaps_internal
+  * This is the deterministic version with randomness supplied externally.
+@@ -1914,7 +2093,7 @@
+     return ret;
+ }
+ 
+-int ossl_ml_kem_encap_rand(uint8_t *ctext, size_t clen,
++/*int ossl_ml_kem_encap_rand(uint8_t *ctext, size_t clen,
+                            uint8_t *shared_secret, size_t slen,
+                            const ML_KEM_KEY *key)
+ {
+@@ -1930,7 +2109,87 @@
+     return ossl_ml_kem_encap_seed(ctext, clen, shared_secret, slen,
+                                   r, sizeof(r), key);
+ }
++*/
++int ossl_ml_kem_encap_rand(uint8_t *ctext, size_t clen,
++                           uint8_t *shared_secret, size_t slen,
++                           const ML_KEM_KEY *key)
++{
++    // 1. Keep the CPU Randomness Generation
++    //    We allocate 'r' on the stack, but we must be careful:
++    //    If we pause, the stack is saved, so 'r' is safe.
++    uint8_t r[ML_KEM_RANDOM_BYTES];
++
++    if (key == NULL) return 0;
++
++    // Generate the 32-byte seed on CPU
++    if (RAND_bytes_ex(key->libctx, r, ML_KEM_RANDOM_BYTES,
++                      key->vinfo->secbits) < 1)
++        return 0;
++
++    // -------------------------------------------------------------
++    // START MODIFICATION
++    // -------------------------------------------------------------
++
++    // 2. Check for Async Support
++    ASYNC_JOB *curr_job = ASYNC_get_current_job();
++    
++    // Fallback: If no async job (e.g., during tests), use old CPU method
++    if (curr_job == NULL) {
++         return ossl_ml_kem_encap_seed(ctext, clen, shared_secret, slen,
++                                      r, sizeof(r), key);
++    }
++
++    // 3. Lazy Init the Batcher
++    if (!batch_system_initialized) {
++        pthread_mutex_init(&global_queue.lock, NULL);
++        pthread_cond_init(&global_queue.cond, NULL);
++        global_queue.count = 0;
++        pthread_create(&batch_thread_id, NULL, cupqc_batch_worker, NULL);
++        batch_system_initialized = 1;
++    }
++
++    // 4. Add to Batch Queue
++    pthread_mutex_lock(&global_queue.lock);
++    
++    int slot = global_queue.count;
++    
++    // [CHECK THIS FIELD NAME]: Verify 'pubkey' vs 'encoded' in ml_kem_local.h
++    // SERIALIZE THE KEY DIRECTLY INTO THE QUEUE
++    // We use the storage buffer we added to cupqc_batch.h
++    // 1184 is the size for ML-KEM-768 public key.
++    ossl_ml_kem_encode_public_key(
++        global_queue.jobs[slot].pub_key_storage, 
++        1184, 
++        key
++    );
++    
++    global_queue.jobs[slot].randomness_in = r;
++    global_queue.jobs[slot].ciphertext_out = ctext;
++    global_queue.jobs[slot].shared_secret_out = shared_secret;
++    global_queue.jobs[slot].job = curr_job;
++    global_queue.jobs[slot].status = 0;
++    
++    global_queue.count++;
++
++    // Trigger Batch if Full
++    if (global_queue.count >= CUPQC_BATCH_SIZE) {
++        pthread_cond_signal(&global_queue.cond);
++    }
++    
++    pthread_mutex_unlock(&global_queue.lock);
+ 
++    // 5. PAUSE Execution (Context Switch)
++    //    This is where the magic happens. The thread stops here.
++    ASYNC_pause_job();
++
++    // 6. RESUME Execution
++    //    We are back! Check if we succeeded.
++    if (global_queue.jobs[slot].status == 1) {
++        return 1; // Success
++    }
++
++    return 0; // Error
++}
+ int ossl_ml_kem_decap(uint8_t *shared_secret, size_t slen,
+                       const uint8_t *ctext, size_t clen,
+                       const ML_KEM_KEY *key)
