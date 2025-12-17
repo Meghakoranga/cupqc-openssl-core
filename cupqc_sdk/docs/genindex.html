@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/nvidia-sphinx-theme.css?v=df3ac72c" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/cupqc_override.css?v=3e799501" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=7f41d439"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview/features.html">SDK Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guides/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/cupqc_pk_usage.html">cuPQC-PK Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/cupqc_hash_usage.html">cuPQC-Hash Usage</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/cupqc_pk_api.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/cupqc_pk/operators.html">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cupqc_pk/traits.html">Traits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cupqc_pk/methods.html">Device Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/cupqc_pk/functions.html">Host Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/cupqc_hash_api.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/cupqc_hash/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/hash/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/hash/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/hash/methods.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="api/cupqc_hash/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/merkle/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/merkle/objects.html">Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/cupqc_hash/merkle/methods.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#C"><strong>C</strong></a>
+ 
+</div>
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithmE">cupqc::hash::algorithm (C++ enum)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4I_9algorithmEN5cupqc4hash9AlgorithmEv">cupqc::hash::Algorithm (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithm9POSEIDON2E">cupqc::hash::algorithm::POSEIDON2 (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithm7SHA2_32E">cupqc::hash::algorithm::SHA2_32 (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithm7SHA2_64E">cupqc::hash::algorithm::SHA2_64 (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithm4SHA3E">cupqc::hash::algorithm::SHA3 (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash9algorithm5SHAKEE">cupqc::hash::algorithm::SHAKE (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/operators.html#_CPPv4N5cupqc4hash5BlockEv">cupqc::hash::Block (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/operators.html#_CPPv4I_j_j_jEN5cupqc4hash8BlockDimEv">cupqc::hash::BlockDim (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4I_jEN5cupqc4hash8CapacityEv">cupqc::hash::Capacity (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4I_5fieldEN5cupqc4hash5FieldEv">cupqc::hash::Field (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/traits.html#_CPPv4N5cupqc4hash4HASH10block_sizeE">cupqc::hash::HASH::block_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH6digestEP7uint8_tK6size_t">cupqc::hash::HASH::digest (C++ function)</a>, <a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH6digestEP8uint32_tK6size_t">[1]</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/traits.html#_CPPv4N5cupqc4hash4HASH11digest_sizeE">cupqc::hash::HASH::digest_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH8finalizeEv">cupqc::hash::HASH::finalize (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH5resetEv">cupqc::hash::HASH::reset (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH6updateEPK7uint8_tK6size_t">cupqc::hash::HASH::update (C++ function)</a>, <a href="api/cupqc_hash/hash/methods.html#_CPPv4N5cupqc4hash4HASH6updateEPK8uint32_tK6size_t">[1]</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/methods.html#_CPPv4I00EN5cupqc4hash6MERKLE11create_leafEvP9PrecisionPK9PrecisionR4HASHK6size_t">cupqc::hash::MERKLE::create_leaf (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/methods.html#_CPPv4I00EN5cupqc4hash6MERKLE14generate_proofEvR5proofI1N4HASH9PrecisionEPK9PrecisionK8uint32_tRK4treeI1N4HASH9PrecisionE">cupqc::hash::MERKLE::generate_proof (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/methods.html#_CPPv4I00EN5cupqc4hash6MERKLE17generate_sub_treeEvR4HASHR4treeI1N4HASH9PrecisionEK6size_t">cupqc::hash::MERKLE::generate_sub_tree (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/methods.html#_CPPv4I00EN5cupqc4hash6MERKLE13generate_treeEvR4HASHR4treeI1N4HASH9PrecisionE">cupqc::hash::MERKLE::generate_tree (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/methods.html#_CPPv4I00EN5cupqc4hash6MERKLE12verify_proofEbRK5proofI1N4HASH9PrecisionEPK9PrecisionK8uint32_tPK9PrecisionR4HASH">cupqc::hash::MERKLE::verify_proof (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/operators.html#_CPPv4I0EN5cupqc4hash9PrecisionEv">cupqc::hash::Precision (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/objects.html#_CPPv4I_7uin32_t00EN5cupqc4hash5proofE">cupqc::hash::proof (C++ class)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4I_jEN5cupqc4hash16SecurityCategoryEv">cupqc::hash::SecurityCategory (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/operators.html#_CPPv4I_jEN5cupqc4hash4SizeEv">cupqc::hash::Size (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash6ThreadEv">cupqc::hash::Thread (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_hash/merkle/objects.html#_CPPv4I_7uin32_t00EN5cupqc4hash4treeE">cupqc::hash::tree (C++ class)</a>
+</li>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4N5cupqc4hash4WarpEv">cupqc::hash::Warp (C++ function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/cupqc_hash/hash/operators.html#_CPPv4I_jEN5cupqc4hash5WidthEv">cupqc::hash::Width (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk9algorithmE">cupqc::pk::algorithm (C++ enum)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4I_9algorithmEN5cupqc2pk9AlgorithmEv">cupqc::pk::Algorithm (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk9algorithm6ML_DSAE">cupqc::pk::algorithm::ML_DSA (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk9algorithm6ML_KEME">cupqc::pk::algorithm::ML_KEM (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk5BlockEv">cupqc::pk::Block (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4I_j_j_jEN5cupqc2pk8BlockDimEv">cupqc::pk::BlockDim (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/functions.html#_CPPv4N5cupqc2pk17destroy_workspaceEP7uint8_t12cudaStream_t">cupqc::pk::destroy_workspace (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8functionE">cupqc::pk::function (C++ enum)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4I_8functionEN5cupqc2pk8FunctionEv">cupqc::pk::Function (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8function6DecapsE">cupqc::pk::function::Decaps (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8function6EncapsE">cupqc::pk::function::Encaps (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8function6KeygenE">cupqc::pk::function::Keygen (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8function4SignE">cupqc::pk::function::Sign (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4N5cupqc2pk8function6VerifyE">cupqc::pk::function::Verify (C++ enumerator)</a>
+</li>
+      <li><a href="api/cupqc_pk/functions.html#_CPPv4I0EN5cupqc2pk11get_entropyEP7uint8_t6size_t12cudaStream_t">cupqc::pk::get_entropy (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/functions.html#_CPPv4I0EN5cupqc2pk14make_workspaceEP7uint8_t6size_t12cudaStream_t">cupqc::pk::make_workspace (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK8BlockDimE">cupqc::pk::PK::BlockDim (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK15ciphertext_sizeE">cupqc::pk::PK::ciphertext_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK12entropy_sizeE">cupqc::pk::PK::entropy_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tP7uint8_tP7uint8_tP7uint8_tP7uint8_t">cupqc::pk::PK::execute (C++ function)</a>, <a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tP7uint8_tPK7uint8_tP7uint8_tP7uint8_tP7uint8_t">[1]</a>, <a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tPK7uint8_tK6size_tPK7uint8_tP7uint8_tP7uint8_tP7uint8_t">[2]</a>, <a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tPK7uint8_tPK7uint8_tP7uint8_tP7uint8_t">[3]</a>, <a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEPK7uint8_tK6size_tPK7uint8_tPK7uint8_tP7uint8_tP7uint8_t">[4]</a>, <a href="api/cupqc_pk/methods.html#_CPPv4N5cupqc2pk2PK7executeEz">[5]</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK15public_key_sizeE">cupqc::pk::PK::public_key_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK15secret_key_sizeE">cupqc::pk::PK::secret_key_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK18shared_memory_sizeE">cupqc::pk::PK::shared_memory_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK18shared_secret_sizeE">cupqc::pk::PK::shared_secret_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK14signature_sizeE">cupqc::pk::PK::signature_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/traits.html#_CPPv4N5cupqc2pk2PK14workspace_sizeE">cupqc::pk::PK::workspace_size (C++ member)</a>
+</li>
+      <li><a href="api/cupqc_pk/functions.html#_CPPv4N5cupqc2pk15release_entropyEP7uint8_t12cudaStream_t">cupqc::pk::release_entropy (C++ function)</a>
+</li>
+      <li><a href="api/cupqc_pk/operators.html#_CPPv4I_jEN5cupqc2pk16SecurityCategoryEv">cupqc::pk::SecurityCategory (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+<div class="bd-sidebar-secondary"></div>
+
+
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Manage My Privacy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/preferences/start/">Do Not Sell or Share My Data</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2025, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+# --- NVIDIA Proprietary Libraries (STRICTLY FORBIDDEN) ---
+libcupqc.a
+libcuhash.a
+*.a
+*.so
+*.so.*
+*.dylib
+
+# --- Build Artifacts (Object files) ---
+*.o
+*.obj
+
+# --- Executables / Binaries ---
+# Your benchmark tool
+benchmark_pqc
+# Your test harness
+cupqc_test
+# Any other compiled output usually has no extension in Linux
+# You can ignore specific ones or all files without extension (risky, better to be specific)
+
+# --- OpenSSL Build Artifacts ---
+# If your openssl source is inside this repo, ignore the build outputs
+*.pyc
+__pycache__/
+Makefile
+configdata.pm
+.modules
+libcrypto.pc
+libssl.pc
+openssl.pc
+apps/openssl
+
+# --- IDE / Editor Settings ---
+.vscode/
+.idea/
+*.swp
