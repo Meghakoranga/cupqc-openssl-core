@@ -1,5 +1,5 @@
---- ml_kem_original.c	2025-12-17 17:11:42.019934033 +0000
-+++ openssl_patches/crypto/ml_kem/ml_kem.c	2025-12-17 17:09:16.150140559 +0000
+--- /home/ubuntu/openssl-original/crypto/ml_kem/ml_kem.c	2025-04-08 13:09:06.000000000 +0000
++++ /home/ubuntu/openssl-openssl-3.5.0/crypto/ml_kem/ml_kem.c	2025-12-15 07:26:42.305193155 +0000
 @@ -6,7 +6,11 @@
   * in the file LICENSE in the source distribution or at
   * https://www.openssl.org/source/license.html
@@ -83,24 +83,6 @@
  /*
   * Structure of keys
   */
-@@ -1402,7 +1468,7 @@
-     }
- 
-     ret = 1;
--  end:
-+ end:
-     OPENSSL_cleanse((void *)augmented_seed, ML_KEM_RANDOM_BYTES);
-     OPENSSL_cleanse((void *)sigma, ML_KEM_RANDOM_BYTES);
-     return ret;
-@@ -1618,7 +1684,7 @@
-      * duplicated.
-      */
-     if (ossl_ml_kem_decoded_key(key))
--        return 0;
-+        return NULL;
- 
-     if (key == NULL
-         || (ret = OPENSSL_memdup(key, sizeof(*key))) == NULL)
 @@ -1805,10 +1871,122 @@
   */
  int ossl_ml_kem_genkey(uint8_t *pubenc, size_t publen, ML_KEM_KEY *key)
@@ -278,7 +260,7 @@
 +    //    We allocate 'r' on the stack, but we must be careful:
 +    //    If we pause, the stack is saved, so 'r' is safe.
 +    uint8_t r[ML_KEM_RANDOM_BYTES];
-+
+ 
 +    if (key == NULL) return 0;
 +
 +    // Generate the 32-byte seed on CPU
@@ -337,7 +319,7 @@
 +    }
 +    
 +    pthread_mutex_unlock(&global_queue.lock);
- 
++
 +    // 5. PAUSE Execution (Context Switch)
 +    //    This is where the magic happens. The thread stops here.
 +    ASYNC_pause_job();
