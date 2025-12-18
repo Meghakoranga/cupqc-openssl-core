@@ -34,3 +34,9 @@ apps/openssl
 .vscode/
 .idea/
 *.swp
+# --- Cryptographic Secrets and Certificates ---
+*.key
+*.pem
+*.crt
+*.csr
+*.srl
