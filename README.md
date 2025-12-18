@@ -39,8 +39,11 @@ The architecture bypasses the standard provider mechanism to reduce stack depth 
 ### Prerequisites & Environment
 **GPU**: NVIDIA Data Center GPU (Tesla T4, A100) or High-end Consumer GPU.
 **SDKs**: NVIDIA cuPQC (Early Access), CUDA Toolkit 12.x+.
-**Base Library**: OpenSSL 3.5.0-alpha (Modified Source).
-
+**Base Library**: OpenSSL 3.5.0 (Modified Source).
+   ```
+   wget https://github.com/openssl/openssl/archive/refs/tags/openssl-3.5.0.tar.gz
+   tar xzf openssl-3.5.0.tar.gz
+   ```
 ### Usage & Verification
 **Enable the Offload Engine**
 The integration is guarded by an environment variable to allow runtime switching between CPU (Software) and GPU (Hardware).
