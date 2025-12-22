@@ -6,13 +6,22 @@ libcuhash.a
 *.so.*
 *.dylib
 
+# SDK and Archives
+cupqc_sdk/
+*.tar.gz
 # --- Build Artifacts (Object files) ---
-*.o
 *.obj
-
-# --- Executables / Binaries ---
-# Your benchmark tool
+# Build Artifacts
 benchmark_pqc
+benchmark_cpu
+*.o
+*.a
+*.so
+build/
+
+# Analysis Reports
+*.sqlite
+*.nsys-rep
 # Your test harness
 cupqc_test
 # Any other compiled output usually has no extension in Linux
@@ -40,3 +49,6 @@ apps/openssl
 *.crt
 *.csr
 *.srl
+cupqc_sdk/
+*.key
+*.pem
