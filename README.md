@@ -30,7 +30,7 @@ Unlike traditional "Provider" approaches (e.g., OQS-Provider) that introduce lat
 
 > **Impact:** The GPU implementation provides a **1.55x speedup** over the fully saturated 4-core Host CPU while keeping host CPU utilization below 5%.
 
-## 🛠️ System Architecture
+## System Architecture
 
 This project modifies the OpenSSL `ml_kem.c` core to interact with a custom C++ CUDA Shim. The architecture focuses on eliminating the "Transfer Penalty" over the PCIe bus.
 
@@ -46,7 +46,7 @@ This project modifies the OpenSSL `ml_kem.c` core to interact with a custom C++ 
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 ├── benchmark_pqc           # High-concurrency throughput benchmarking tool
