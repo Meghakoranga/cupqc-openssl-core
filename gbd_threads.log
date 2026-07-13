@@ -1,0 +1,219 @@
+Already logging to gbd_threads.log.
+
+Thread 18 (Thread 0x7618403ff000 (LWP 2330) "cuda00001400006"):
+#0  0x0000761846b1b4fd in __GI___poll (fds=0x57d5413f2bc0, nfds=3, timeout=-1) at ../sysdeps/unix/sysv/linux/poll.c:29
+#1  0x000076184071ce27 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#2  0x000076184080c5f7 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#3  0x0000761840708bb3 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#4  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#5  0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 17 (Thread 0x76183e74a000 (LWP 2341) "cuda-EvtHandlr"):
+#0  0x0000761846b1b4fd in __GI___poll (fds=0x76182c000c20, nfds=11, timeout=100) at ../sysdeps/unix/sysv/linux/poll.c:29
+#1  0x000076184071ce27 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#2  0x000076184080c5f7 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#3  0x0000761840708bb3 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#4  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#5  0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 16 (Thread 0x76180b7fe000 (LWP 2350) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846dba13c <global_queue+400796>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846dba13c <global_queue+400796>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846dba13c <global_queue+400796>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846dba0e8 <global_queue+400712>, cond=0x761846dba110 <global_queue+400752>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846dba110 <global_queue+400752>, mutex=0x761846dba0e8 <global_queue+400712>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 15 (Thread 0x7617887d8000 (LWP 2416) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d6e144 <global_queue+89508>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d6e144 <global_queue+89508>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d6e144 <global_queue+89508>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d6e0f0 <global_queue+89424>, cond=0x761846d6e118 <global_queue+89464>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d6e118 <global_queue+89464>, mutex=0x761846d6e0f0 <global_queue+89424>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 14 (Thread 0x7617877d6000 (LWP 2418) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d89cdc <global_queue+203068>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d89cdc <global_queue+203068>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d89cdc <global_queue+203068>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d89c88 <global_queue+202984>, cond=0x761846d89cb0 <global_queue+203024>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d89cb0 <global_queue+203024>, mutex=0x761846d89c88 <global_queue+202984>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 13 (Thread 0x76177bfbf000 (LWP 2441) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d8b1bc <global_queue+208412>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d8b1bc <global_queue+208412>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d8b1bc <global_queue+208412>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d8b168 <global_queue+208328>, cond=0x761846d8b190 <global_queue+208368>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d8b190 <global_queue+208368>, mutex=0x761846d8b168 <global_queue+208328>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 12 (Thread 0x761767f97000 (LWP 2481) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846dad07c <global_queue+347356>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846dad07c <global_queue+347356>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846dad07c <global_queue+347356>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846dad028 <global_queue+347272>, cond=0x761846dad050 <global_queue+347312>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846dad050 <global_queue+347312>, mutex=0x761846dad028 <global_queue+347272>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 11 (Thread 0x76175376e000 (LWP 2522) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=30232, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846dff404 <global_queue+684132>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30232, abstime=0x0, clockid=0, expected=0, futex_word=0x761846dff404 <global_queue+684132>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846dff404 <global_queue+684132>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846dff3b0 <global_queue+684048>, cond=0x761846dff3d8 <global_queue+684088>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846dff3d8 <global_queue+684088>, mutex=0x761846dff3b0 <global_queue+684048>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6bac6 in cupqc_batch_worker () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#7  0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 10 (Thread 0x76172bf1f000 (LWP 2601) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d8ac84 <global_queue+207076>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d8ac84 <global_queue+207076>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d8ac84 <global_queue+207076>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d8ac30 <global_queue+206992>, cond=0x761846d8ac58 <global_queue+207032>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d8ac58 <global_queue+207032>, mutex=0x761846d8ac30 <global_queue+206992>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 9 (Thread 0x761724710000 (LWP 2616) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d70094 <global_queue+97524>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d70094 <global_queue+97524>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d70094 <global_queue+97524>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d70040 <global_queue+97440>, cond=0x761846d70068 <global_queue+97480>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d70068 <global_queue+97480>, mutex=0x761846d70040 <global_queue+97440>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 8 (Thread 0x7616ecea1000 (LWP 2727) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846dae55c <global_queue+352700>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846dae55c <global_queue+352700>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846dae55c <global_queue+352700>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846dae508 <global_queue+352616>, cond=0x761846dae530 <global_queue+352656>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846dae530 <global_queue+352656>, mutex=0x761846dae508 <global_queue+352616>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 7 (Thread 0x7616d7676000 (LWP 2770) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846db4dbc <global_queue+379420>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846db4dbc <global_queue+379420>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846db4dbc <global_queue+379420>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846db4d68 <global_queue+379336>, cond=0x761846db4d90 <global_queue+379376>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846db4d90 <global_queue+379376>, mutex=0x761846db4d68 <global_queue+379336>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 6 (Thread 0x7616cee65000 (LWP 2787) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d7cc1c <global_queue+149628>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d7cc1c <global_queue+149628>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d7cc1c <global_queue+149628>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d7cbc8 <global_queue+149544>, cond=0x761846d7cbf0 <global_queue+149584>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d7cbf0 <global_queue+149584>, mutex=0x761846d7cbc8 <global_queue+149544>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 5 (Thread 0x7616c5652000 (LWP 2806) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d8c164 <global_queue+212420>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d8c164 <global_queue+212420>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d8c164 <global_queue+212420>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d8c110 <global_queue+212336>, cond=0x761846d8c138 <global_queue+212376>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d8c138 <global_queue+212376>, mutex=0x761846d8c110 <global_queue+212336>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 4 (Thread 0x7616bde43000 (LWP 2821) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d8b6f4 <global_queue+209748>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d8b6f4 <global_queue+209748>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d8b6f4 <global_queue+209748>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d8b6a0 <global_queue+209664>, cond=0x761846d8b6c8 <global_queue+209704>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d8b6c8 <global_queue+209704>, mutex=0x761846d8b6a0 <global_queue+209664>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 3 (Thread 0x7616b5e33000 (LWP 2837) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d87854 <global_queue+193716>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d87854 <global_queue+193716>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d87854 <global_queue+193716>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d87800 <global_queue+193632>, cond=0x761846d87828 <global_queue+193672>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d87828 <global_queue+193672>, mutex=0x761846d87800 <global_queue+193632>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 2 (Thread 0x7616b4e31000 (LWP 2839) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=0, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x761846d6f0ec <global_queue+93516>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=0, abstime=0x0, clockid=0, expected=0, futex_word=0x761846d6f0ec <global_queue+93516>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x761846d6f0ec <global_queue+93516>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x761846d6f098 <global_queue+93432>, cond=0x761846d6f0c0 <global_queue+93472>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x761846d6f0c0 <global_queue+93472>, mutex=0x761846d6f098 <global_queue+93432>) at ./nptl/pthread_cond_wait.c:627
+#5  0x0000761846c6c114 in cupqc_submit_encap_job () from /home/ubuntu/cupqc_project/libcupqc_shim.so
+#6  0x000076184707353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x0000761847232480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x000057d52923f4d5 in gpu_worker (arg=0x7fffe71fab94) at benchmark_pqc.c:40
+#9  0x0000761846a9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x0000761846b29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 1 (Thread 0x76184744f000 (LWP 2329) "benchmark_pqc"):
+#0  0x0000761846a98d71 in __futex_abstimed_wait_common64 (private=128, cancel=true, abstime=0x0, op=265, expected=2350, futex_word=0x76180b7fe2d0) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=128, abstime=0x0, clockid=0, expected=2350, futex_word=0x76180b7fe2d0) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x76180b7fe2d0, expected=2350, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=128) at ./nptl/futex-internal.c:139
+#3  0x0000761846a9e7a3 in __pthread_clockjoin_ex (threadid=129845644222464, thread_return=0x0, clockid=0, abstime=0x0, block=<optimized out>) at ./nptl/pthread_join_common.c:102
+#4  0x000057d52923f653 in main () at benchmark_pqc.c:68
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+

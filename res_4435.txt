@@ -1,0 +1,7 @@
+Starting TLS Benchmark (ML-KEM-768)
+Threads: 16 | Total Requests: 2496
+
+--- TLS Results ---
+Handshakes: 2496
+Time:       6.36 sec
+Rate:       392.27 Handshakes/Sec

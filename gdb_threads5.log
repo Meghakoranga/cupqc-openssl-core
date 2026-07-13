@@ -1,0 +1,127 @@
+
+Thread 11 (Thread 0x75b1e65ff000 (LWP 5285) "cuda00001400006"):
+#0  0x000075b1ecd1b4fd in __GI___poll (fds=0x60642c217bc0, nfds=3, timeout=-1) at ../sysdeps/unix/sysv/linux/poll.c:29
+#1  0x000075b1e691ce27 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#2  0x000075b1e6a0c5f7 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#3  0x000075b1e6908bb3 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#4  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#5  0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 10 (Thread 0x75b1e494a000 (LWP 5289) "cuda-EvtHandlr"):
+#0  0x000075b1ecd1b4fd in __GI___poll (fds=0x75b1d4000c20, nfds=11, timeout=100) at ../sysdeps/unix/sysv/linux/poll.c:29
+#1  0x000075b1e691ce27 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#2  0x000075b1e6a0c5f7 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#3  0x000075b1e6908bb3 in ?? () from /lib/x86_64-linux-gnu/libcuda.so.1
+#4  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#5  0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 9 (Thread 0x75b1c97df000 (LWP 5360) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfb0cdc <global_queue+366908>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfb0cdc <global_queue+366908>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfb0cdc <global_queue+366908>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfb0c88 <global_queue+366824>, cond=0x75b1ecfb0cb0 <global_queue+366864>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfb0cb0 <global_queue+366864>, mutex=0x75b1ecfb0c88 <global_queue+366824>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1c97db310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1c97db2f0 "s\355\322E\265\016\366)\223\360d\021\f\tC\241\3742\254>(\217f\373\311^\251\r\206\003=\nl\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b1e0011380 "\352?\2520\253\2569\223\220r\370{\035Ĉ\177S\234\027Caj\017\021\271\241\272\2309y\023\303\356\234Z\2748\3654\005\f\364\006\ac\320B\330{m\"\203j-\003X\203\032\215\3058\272\236\0021\\\222_\203V\321\332<\366?\303'\b\353.\327\321{\210Z\345\2434o\036l]\n\246\352\2445Ѩtd_Ici\251\351\2321\020!\b\b\323\335D\247\270R\302\205\214\023\026\217\354\246#0y;\t\311z\037\246;\235?\270\355\274\n\315\365^'\225\216\024\261Qa\352_\300\023K\tVB\324u\021\310\364f贪7Vҡ\200\220%ҷ\251\330h\265<\207\3013Ғ\034\301\004\226L\253\253\354Sfy"..., shared_secret_out=0x75b1e0016f40 "\366\260C\210y\003^d\240k\022\022\237\251Y\270\001,\2204I\n\203\355%\224Ͼ\025j\f\212") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 8 (Thread 0x75b1c91c7000 (LWP 5384) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfb60dc <global_queue+388412>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfb60dc <global_queue+388412>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfb60dc <global_queue+388412>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfb6088 <global_queue+388328>, cond=0x75b1ecfb60b0 <global_queue+388368>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfb60b0 <global_queue+388368>, mutex=0x75b1ecfb6088 <global_queue+388328>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1c91c3310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1c91c32f0 "\341rfG\224\327\214|\211\004\244\307\365:\300\200N/\225%+\246z\224-.\342r\273<\032\265l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b1a00428a0 "z<\247\256Ç\002Lx6\332\027\264\347<\267\b;vkq5\036\177\377ZD\024X4\346!\236^z", shared_secret_out=0x75b1a0041fc0 "\252=\267\326\370\026\033\266\263\225\0362$\254\311ǖ\220\177S\r\251J\205&\205r\236\237x\200\256") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 7 (Thread 0x75b1c8e39000 (LWP 5398) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfb1c9c <global_queue+370940>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfb1c9c <global_queue+370940>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfb1c9c <global_queue+370940>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfb1c48 <global_queue+370856>, cond=0x75b1ecfb1c70 <global_queue+370896>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfb1c70 <global_queue+370896>, mutex=0x75b1ecfb1c48 <global_queue+370856>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1c8e35310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1c8e352f0 "|\243\006\277ͽ\300\314\0353\031\221*\020:Ɍn\031g\305â\263\"\275[~3\260\020ul\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b198009b00 "I\250\v\240r\275D\366V28\322-I7\372\224&,Ȯ\217\200\256ǎcgm\216\261#\216CsB\v\n\\\257Q<\177,\200J\373\034\311:", shared_secret_out=0x75b1980138a0 "\ay\202\242)\324f\345\336\026\037\225F\305\032\034\233\330\375\003", <incomplete sequence \375>) at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 6 (Thread 0x75b1c8df8000 (LWP 5399) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfac89c <global_queue+349436>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfac89c <global_queue+349436>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfac89c <global_queue+349436>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfac848 <global_queue+349352>, cond=0x75b1ecfac870 <global_queue+349392>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfac870 <global_queue+349392>, mutex=0x75b1ecfac848 <global_queue+349352>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1c8df4310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1c8df42f0 "\371\030\332?\177\267[N\320s\n\334\322\002M\252\317\017R<n\374\316\3113(\333!w\261\220\214l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b19403abc0 "z\b\tJÙͪ\332/8.\352\221V]?\354H\223\327w4\232R\t\006\003cê\244\023\024\231\230۸\340œf\205\245\345\307R\r\3212\004\320\304\021\253\302U\236\233\366\337\350\236ҍx\243.\022\226\327ӭT5\352T\352\221\371)\322l\256\215\240\370\346\377+\272\335\362+\276lt\344\265\302\232\342\3256\026W53\346\274u\214\317\031\340K\032X\212\234Ƶ\362\255\276\r\214\201\242\360\214K(\022\323\024zH\223PI\201\370\262{\f<\t\313d\344\335mO\\\205\020\266\fp\354 \006\203\374Ƴ\255\277@\355_}\225\030\034\367]C\347u\2335\177\254yާ\032\316\324\322\002@\022,bt\267z"..., shared_secret_out=0x75b19401da00 "q\315\035\036>4\241\003\033\200\241\354\r\240 \v\264\213\204\tub\326\3504ø]JڿD") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 5 (Thread 0x75b1c865a000 (LWP 5429) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfb079c <global_queue+365564>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfb079c <global_queue+365564>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfb079c <global_queue+365564>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfb0748 <global_queue+365480>, cond=0x75b1ecfb0770 <global_queue+365520>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfb0770 <global_queue+365520>, mutex=0x75b1ecfb0748 <global_queue+365480>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1c8656310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1c86562f0 "\255b\v\3510\333^t\r\202\341,\237]\365\223\032\006\020Gܽ\302d\214\177\242Ն\220\206\nl\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b18c00ad00 "\275\336f\357r\245\b\001c-\203yv\264أ\r\314u/H\tl\264\334\354ˡ\247\216P^pΨT!bG\253\343\a;\0215\373\022\346*i\245\376\336\370\335!\271\"\245b\271\350\355\207z\336;\272o\027tڃ\343\300\340\v??\024-a\206\374\306\364hk\2227\231\036\032\273\004\231\204\274\227\004#\3502\267fʃjݜ\230\f\326/\313\371\312:\353m\024J\374\264\365\370\212\3277\313Ia\340\031sX\021\226\253U\243@\226\016{O\264\364\026\307Y\023\001^\264\317\"\347@\256\264ϭ\373Md\374\3249\221\206z\220\241:\331=G", shared_secret_out=0x75b18c005790 "\204c\034a\200j\321\005\177\207H\255j\271\261ll\336;\366\365\262\212\267\271\240\276q\222\234\236\276") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 4 (Thread 0x75b157965000 (LWP 5480) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfacddc <global_queue+350780>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfacddc <global_queue+350780>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfacddc <global_queue+350780>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfacd88 <global_queue+350696>, cond=0x75b1ecfacdb0 <global_queue+350736>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfacdb0 <global_queue+350736>, mutex=0x75b1ecfacd88 <global_queue+350696>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b157961310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1579612f0 "\244\3302(k\267\243㵝\024\234\207D\020\366~\b\240\363\202\306>\246Q\353\b\3432~T\037l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b15c01bf30 "\224o\275\373u\252-\2217z\211H\2434\016\356!q[q", shared_secret_out=0x75b15c0587d0 "H\330e\344v/\205\306I\347[Q\257\036\257\350EQع\250e\234\016\3523*\016\211\030p\257") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 3 (Thread 0x75b1572cb000 (LWP 5506) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfad85c <global_queue+353468>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfad85c <global_queue+353468>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfad85c <global_queue+353468>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfad808 <global_queue+353384>, cond=0x75b1ecfad830 <global_queue+353424>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfad830 <global_queue+353424>, mutex=0x75b1ecfad808 <global_queue+353384>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece6a38b in cupqc_submit_encap_job (public_key=0x75b1572c7310 "l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, randomness=0x75b1572c72f0 "_8Ȓ7\362\265U\017i8\021z\024k\272\035\021\334p\305\t`\030d\246\026Q\326\364K\363l\023\2379\200\300\020\021\023\276\0349\220\363aÒq\221\331r\327iJ\370\222\212n\211\305H\n\002\264\261\273\020\333\003I\025\005r\243C\\\206K|p\237\3115\251\370\201\216\214\034%\363\354|\265\301=7\nR\336g\220\236\372\227\210W\243>\231\r\030\254*?\253\266OG5*\321\310\373\321\030\022\367\274\270\260\243\234\363A\234\027!U\226\0310\304\020\200\214gS\006\313䰵\372\224\177X\023ih;8\224H\254\252\202T\ttG\222:\027\005doz\030:ID^\211\341\005'\262\037", <incomplete sequence \346>, ciphertext_out=0x75b1d401a180 "\235\320`\\\221v\301\366\340\321)\315itA\016\317\r&\216\340\261\021\254\300\006\311y\311\327\362I>\367\252\210v\233H\357\357gƹ\206\aKL\v\a\030\025\274\211\244\253_ح0\334[\251@\266F\r\217\354\030ep\a\227\023Y\340e\271O۸\222\021\343,\350?\016\033\263\021\222ꖣ\200\037\300\b\027\206\314v\224\020\374.\375\001\324\365\177\204#\315\304j\246lʄ\215\201<&Υ'\212\221 \246\200]\347\357nU~\022\275\201\307w\037\2240Z'eYcI{K\367\375\334_\244\031eP\355{\255\252\224\020\335\345\v\360\001\324\326\330M\v\307\032\243ϙ?\277\241ϖW\353.\353\354\243R8", <incomplete sequence \305>..., shared_secret_out=0x75b1d4006bb0 "j\250\"7Fj\032\307\032.\236\352\226\374\275\244\024r\204\026;\221\365\306\030\307ÃW\361\200}") at cupqc_runtime.c:228
+#6  0x000075b1ed27353d in ossl_ml_kem_encap_rand () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#7  0x000075b1ed432480 in ml_kem_encapsulate () from /home/ubuntu/openssl-openssl-3.5.0/libcrypto.so.3
+#8  0x00006063fb56d575 in gpu_worker (arg=0x7ffd1f072714) at benchmark_pqc.c:40
+#9  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#10 0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 2 (Thread 0x75b156fbf000 (LWP 5517) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=30129, cancel=true, abstime=0x0, op=393, expected=0, futex_word=0x75b1ecfff404 <global_queue+688228>) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=30129, abstime=0x0, clockid=0, expected=0, futex_word=0x75b1ecfff404 <global_queue+688228>) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1ecfff404 <global_queue+688228>, expected=expected@entry=0, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=0) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9b7ed in __pthread_cond_wait_common (abstime=0x0, clockid=0, mutex=0x75b1ecfff3b0 <global_queue+688144>, cond=0x75b1ecfff3d8 <global_queue+688184>) at ./nptl/pthread_cond_wait.c:503
+#4  ___pthread_cond_wait (cond=0x75b1ecfff3d8 <global_queue+688184>, mutex=0x75b1ecfff3b0 <global_queue+688144>) at ./nptl/pthread_cond_wait.c:627
+#5  0x000075b1ece69b48 in cupqc_batch_worker (arg=0x0) at cupqc_runtime.c:116
+#6  0x000075b1ecc9caa4 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:447
+#7  0x000075b1ecd29c6c in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Thread 1 (Thread 0x75b1ece15000 (LWP 5284) "benchmark_pqc"):
+#0  0x000075b1ecc98d71 in __futex_abstimed_wait_common64 (private=128, cancel=true, abstime=0x0, op=265, expected=5360, futex_word=0x75b1c97df2d0) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=128, abstime=0x0, clockid=0, expected=5360, futex_word=0x75b1c97df2d0) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x75b1c97df2d0, expected=5360, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=128) at ./nptl/futex-internal.c:139
+#3  0x000075b1ecc9e7a3 in __pthread_clockjoin_ex (threadid=129406450135040, thread_return=0x0, clockid=0, abstime=0x0, block=<optimized out>) at ./nptl/pthread_join_common.c:102
+#4  0x00006063fb56d7a7 in main () at benchmark_pqc.c:82
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
