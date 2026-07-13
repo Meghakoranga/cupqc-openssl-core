@@ -46,19 +46,7 @@ This project modifies the OpenSSL `ml_kem.c` core to interact with a custom C++ 
 
 ---
 
-## Repository Structure
 
-```text
-├── benchmark_pqc           # High-concurrency throughput benchmarking tool
-├── cupqc_shim.cu           # CUDA Shim: Handles Pinned Memory, DMA, and Batching
-├── cupqc_shim.h            # Header interface for OpenSSL
-├── openssl_patches/        # Modified OpenSSL source tree
-│   └── crypto/
-│       └── ml_kem/
-│           └── ml_kem.c    # Core PQC logic patched for GPU offload
-├── libcupqc.so             # Compiled shared object for the Shim
-└── scripts/                # Build and test automation scripts
-```
 ### Prerequisites
 <ul>
 <li>Hardware: NVIDIA Data Center GPU (Tesla T4, A100, etc.)</li>
